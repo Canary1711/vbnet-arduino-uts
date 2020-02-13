@@ -22,20 +22,23 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.MetroTabControl1 = New MetroFramework.Controls.MetroTabControl()
         Me.lampTab = New System.Windows.Forms.TabPage()
+        Me.btnAllLamp = New MetroFramework.Controls.MetroButton()
+        Me.lampTamu = New MetroFramework.Controls.MetroTile()
         Me.lampDapur = New MetroFramework.Controls.MetroTile()
         Me.lampMandi = New MetroFramework.Controls.MetroTile()
         Me.lampKamar = New MetroFramework.Controls.MetroTile()
         Me.lampKamar2 = New MetroFramework.Controls.MetroTile()
         Me.windowTab = New System.Windows.Forms.TabPage()
-        Me.curtainTab = New System.Windows.Forms.TabPage()
-        Me.lampTamu = New MetroFramework.Controls.MetroTile()
-        Me.btnAllLamp = New MetroFramework.Controls.MetroButton()
-        Me.btnWindow = New MetroFramework.Controls.MetroButton()
         Me.btnDoor = New MetroFramework.Controls.MetroButton()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.btnWindow = New MetroFramework.Controls.MetroButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.curtainTab = New System.Windows.Forms.TabPage()
+        Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.MetroTabControl1.SuspendLayout()
         Me.lampTab.SuspendLayout()
         Me.windowTab.SuspendLayout()
@@ -68,6 +71,25 @@ Partial Class Form1
         Me.lampTab.Size = New System.Drawing.Size(624, 342)
         Me.lampTab.TabIndex = 0
         Me.lampTab.Text = "Lamp"
+        '
+        'btnAllLamp
+        '
+        Me.btnAllLamp.Location = New System.Drawing.Point(256, 316)
+        Me.btnAllLamp.Name = "btnAllLamp"
+        Me.btnAllLamp.Size = New System.Drawing.Size(88, 31)
+        Me.btnAllLamp.TabIndex = 5
+        Me.btnAllLamp.Text = "Turn All Lamp"
+        Me.btnAllLamp.UseSelectable = True
+        '
+        'lampTamu
+        '
+        Me.lampTamu.ActiveControl = Nothing
+        Me.lampTamu.Location = New System.Drawing.Point(365, 185)
+        Me.lampTamu.Name = "lampTamu"
+        Me.lampTamu.Size = New System.Drawing.Size(240, 112)
+        Me.lampTamu.TabIndex = 4
+        Me.lampTamu.Text = "Ruang Tamu"
+        Me.lampTamu.UseSelectable = True
         '
         'lampDapur
         '
@@ -121,42 +143,6 @@ Partial Class Form1
         Me.windowTab.TabIndex = 1
         Me.windowTab.Text = "Window && Door"
         '
-        'curtainTab
-        '
-        Me.curtainTab.Location = New System.Drawing.Point(4, 38)
-        Me.curtainTab.Name = "curtainTab"
-        Me.curtainTab.Size = New System.Drawing.Size(624, 342)
-        Me.curtainTab.TabIndex = 2
-        Me.curtainTab.Text = "Curtain"
-        '
-        'lampTamu
-        '
-        Me.lampTamu.ActiveControl = Nothing
-        Me.lampTamu.Location = New System.Drawing.Point(365, 185)
-        Me.lampTamu.Name = "lampTamu"
-        Me.lampTamu.Size = New System.Drawing.Size(240, 112)
-        Me.lampTamu.TabIndex = 4
-        Me.lampTamu.Text = "Ruang Tamu"
-        Me.lampTamu.UseSelectable = True
-        '
-        'btnAllLamp
-        '
-        Me.btnAllLamp.Location = New System.Drawing.Point(256, 316)
-        Me.btnAllLamp.Name = "btnAllLamp"
-        Me.btnAllLamp.Size = New System.Drawing.Size(88, 31)
-        Me.btnAllLamp.TabIndex = 5
-        Me.btnAllLamp.Text = "Turn All Lamp"
-        Me.btnAllLamp.UseSelectable = True
-        '
-        'btnWindow
-        '
-        Me.btnWindow.Location = New System.Drawing.Point(200, 150)
-        Me.btnWindow.Name = "btnWindow"
-        Me.btnWindow.Size = New System.Drawing.Size(85, 35)
-        Me.btnWindow.TabIndex = 1
-        Me.btnWindow.Text = "Open"
-        Me.btnWindow.UseSelectable = True
-        '
         'btnDoor
         '
         Me.btnDoor.Location = New System.Drawing.Point(370, 150)
@@ -176,6 +162,15 @@ Partial Class Form1
         Me.PictureBox2.TabIndex = 2
         Me.PictureBox2.TabStop = False
         '
+        'btnWindow
+        '
+        Me.btnWindow.Location = New System.Drawing.Point(200, 150)
+        Me.btnWindow.Name = "btnWindow"
+        Me.btnWindow.Size = New System.Drawing.Size(85, 35)
+        Me.btnWindow.TabIndex = 1
+        Me.btnWindow.Text = "Open"
+        Me.btnWindow.UseSelectable = True
+        '
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.uts.My.Resources.Resources.icons8_frozen_window_480px_2
@@ -187,12 +182,25 @@ Partial Class Form1
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
+        'curtainTab
+        '
+        Me.curtainTab.Location = New System.Drawing.Point(4, 38)
+        Me.curtainTab.Name = "curtainTab"
+        Me.curtainTab.Size = New System.Drawing.Size(624, 342)
+        Me.curtainTab.TabIndex = 2
+        Me.curtainTab.Text = "Curtain"
+        '
+        'SerialPort1
+        '
+        Me.SerialPort1.PortName = "COM3"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(681, 470)
         Me.Controls.Add(Me.MetroTabControl1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.Text = "Smart Home"
         Me.MetroTabControl1.ResumeLayout(False)
@@ -218,4 +226,5 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents btnDoor As MetroFramework.Controls.MetroButton
     Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents SerialPort1 As IO.Ports.SerialPort
 End Class

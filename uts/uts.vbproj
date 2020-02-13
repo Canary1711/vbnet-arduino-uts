@@ -141,5 +141,8 @@
   <ItemGroup>
     <None Include="Resources\icons8_door_208px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_home_address.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
